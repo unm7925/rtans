@@ -1,0 +1,14 @@
+D:\C#Study\SpartaDun\SpartaDun\bin\Debug\net8.0\SpartaDun.exe
+D:\C#Study\SpartaDun\SpartaDun\bin\Debug\net8.0\SpartaDun.deps.json
+D:\C#Study\SpartaDun\SpartaDun\bin\Debug\net8.0\SpartaDun.runtimeconfig.json
+D:\C#Study\SpartaDun\SpartaDun\bin\Debug\net8.0\SpartaDun.dll
+D:\C#Study\SpartaDun\SpartaDun\bin\Debug\net8.0\SpartaDun.pdb
+D:\C#Study\SpartaDun\SpartaDun\obj\Debug\net8.0\SpartaDun.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#Study\SpartaDun\SpartaDun\obj\Debug\net8.0\SpartaDun.AssemblyInfoInputs.cache
+D:\C#Study\SpartaDun\SpartaDun\obj\Debug\net8.0\SpartaDun.AssemblyInfo.cs
+D:\C#Study\SpartaDun\SpartaDun\obj\Debug\net8.0\SpartaDun.csproj.CoreCompileInputs.cache
+D:\C#Study\SpartaDun\SpartaDun\obj\Debug\net8.0\SpartaDun.dll
+D:\C#Study\SpartaDun\SpartaDun\obj\Debug\net8.0\refint\SpartaDun.dll
+D:\C#Study\SpartaDun\SpartaDun\obj\Debug\net8.0\SpartaDun.pdb
+D:\C#Study\SpartaDun\SpartaDun\obj\Debug\net8.0\SpartaDun.genruntimeconfig.cache
+D:\C#Study\SpartaDun\SpartaDun\obj\Debug\net8.0\ref\SpartaDun.dll
