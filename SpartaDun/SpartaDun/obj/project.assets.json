@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C#Study\\SpartaDun\\SpartaDun\\SpartaDun.csproj",
+      "projectUniqueName": "C:\\Users\\win10\\OneDrive\\바탕 화면\\Study\\SpartaDun\\SpartaDun\\SpartaDun.csproj",
       "projectName": "SpartaDun",
-      "projectPath": "D:\\C#Study\\SpartaDun\\SpartaDun\\SpartaDun.csproj",
+      "projectPath": "C:\\Users\\win10\\OneDrive\\바탕 화면\\Study\\SpartaDun\\SpartaDun\\SpartaDun.csproj",
       "packagesPath": "C:\\Users\\win10\\.nuget\\packages\\",
-      "outputPath": "D:\\C#Study\\SpartaDun\\SpartaDun\\obj\\",
+      "outputPath": "C:\\Users\\win10\\OneDrive\\바탕 화면\\Study\\SpartaDun\\SpartaDun\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

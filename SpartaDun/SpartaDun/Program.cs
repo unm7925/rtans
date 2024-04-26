@@ -1,8 +1,10 @@
-﻿using System.ComponentModel.Design;
+﻿using System.Collections.Specialized;
+using System.ComponentModel.Design;
 using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks.Dataflow;
 using System.Xml;
 using static SpartaDun.Program;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SpartaDun
 {
@@ -15,20 +17,15 @@ namespace SpartaDun
         private static string playerT = taptap + taptap;
 
         private static Random random = new Random();
-        
+
         static void Main(string[] args)
         {
             bool isPlayerTalk = true;
-            UserInfoStruct infoData = new UserInfoStruct(1,"none","none",10,5,100,1500);
+            UserInfoStruct infoData = new UserInfoStruct(1, "none", "none", 10, 5, 100, 1500);
             EveryFunction func = new EveryFunction(infoData);
             Place map = new Place();
             Player play = new Player();
-            
-            
-            
-            
 
-            
             map.StartPlace();
             Console.WriteLine("??? : \"안녕하세요. 처음뵙겠습니다.\n      당신의 운은 좋으신가요?\"");
             Console.WriteLine($"{playerT}1.네\t2.아니요");
@@ -61,41 +58,41 @@ namespace SpartaDun
                     Console.WriteLine("??? : \"여긴 왜 오신걸까요?\"");
                     Console.WriteLine($"{playerT}1.과제\t2.재미");
                     play.PlayTalk();
-                    if(choice==1)
+                    if (choice == 1)
                     {
                         Console.WriteLine("??? :\" 그게 무슨..? \"\n");
                     }
-                    else if(choice==2)
+                    else if (choice == 2)
                     {
                         Console.WriteLine("??? : \"재미..? 스릴 넘치겠네요!\"\n");
                     }
                 }
-                else if (luck < 6) 
-                { 
+                else if (luck < 6)
+                {
                     Console.WriteLine("??? : \"애매한것이 안좋은 것보다 못하다는 사실 아시나요?\"\n");
                     Console.WriteLine($"{playerT}1.안다\t2.모른다");
                     play.PlayTalk();
-                    if(choice == 1) 
+                    if (choice == 1)
                     {
                         Console.WriteLine("??? : \"아시는 구나. . . 그럼 화이팅하시길\"\n");
                         Console.WriteLine($"{taptap}왜인지 모르게 침울한 것 같다.\n");
                     }
-                    else if(choice==2)
+                    else if (choice == 2)
                     {
                         Console.WriteLine("??? : \"이걸 모르시네. . 저도 몰라요 어디서 나온말인지\"\n");
                     }
                 }
-                else 
+                else
                 {
                     Console.WriteLine("??? : \"여태 어떻게 살아오신걸까요?\"\n");
                     Console.WriteLine($"{playerT}무슨 뜻인걸까?\n" +
                         $"{playerT}1.묻는다\t2.안묻는다.");
                     play.PlayTalk();
-                    if(choice == 1)
+                    if (choice == 1)
                     {
                         Console.WriteLine("??? : \"그냥 . . 단순한 호기심이였어요.\"\n");
                     }
-                    else if(choice == 2)
+                    else if (choice == 2)
                     {
                         Console.WriteLine($"{taptap}???이 모습을 감추었다.\n");
                     }
@@ -106,27 +103,27 @@ namespace SpartaDun
                 luck = 3;
                 Console.WriteLine($"??? : \"앞으론 자신을 믿어봅시다. 당신의 운은 {luck} 이정도 라고 하고 다니세요.\"");
             }
-            
+
             Console.WriteLine($"{taptap}더이상 할 것이 없는 것 같다\n{taptap}그 자리에서 뒤를 돌았다.");
             Console.WriteLine($"{taptap}아무소리도 들리지 않고\n{taptap}앞에 길이 흐릿하게 보일정도의 어두움이다.\n" +
                 $"{playerT}1.따라간다.\t2.안간다");
             play.PlayTalk();
-            if(choice == 1) 
+            if (choice == 1)
             {
                 map.StandardPlace();
                 Console.WriteLine($"{taptap}점점 빛이 들어오기 시작하고\n{taptap}#이 그려진 건물이 보인다.");
             }
-            else if(choice == 2) 
+            else if (choice == 2)
             {
                 Console.WriteLine($"{taptap}점점 더 어두워지는 것 같다.\n{taptap}뒤에서 발걸음 소리가 들려온다.");
                 Console.WriteLine($"{playerT}1.길을 따라간다\t2.안간다.");
                 play.PlayTalk();
-                if(choice == 1)
+                if (choice == 1)
                 {
                     map.StandardPlace();
                     Console.WriteLine($"{taptap}점점 빛이 들어오기 시작하고\n{taptap}#이 그려진 건물이 보인다.");
                 }
-                else if(choice ==2)
+                else if (choice == 2)
                 {
                     Console.WriteLine($"{taptap}형태가 드러날 정도의 거리가 되자 정신을 잃었다.\n{taptap}정신이 돌아오고 있을 무렵 땅에 쓸린 상처가 생겼다.");
                     map.StandardPlace();
@@ -141,19 +138,19 @@ namespace SpartaDun
                 Console.WriteLine($"\n{playerT}1.상태보기\n" +
                                   $"{playerT}2.가방열기\n" +
                                   $"{playerT}3.#점\n{playerT}0.나가기\n");
-            Console.Write($"{playerT}당신의 선택은?\n" +
-            $"{playerT} ");
-            
+                Console.Write($"{playerT}당신의 선택은?\n" +
+                $"{playerT} ");
+
                 play.PlayerSelect();
                 if (choice == 1)
                 {
                     func.UsingStats();
-                    
+
                 }
                 else if (choice == 2)
                 {
                     func.UsingInven();
-                    
+
                 }
                 else if (choice == 3)
                 {
@@ -192,16 +189,16 @@ namespace SpartaDun
                                   $"{taptap}＠　º　　　 ■■■■■■　   º  ＠\n" +
                                   $"{taptap}　　§┐　　 　■　　■　 　 ┌ §\n" +
                                   $"{taptap}　　＠│　　■■■■■■  　 │ ＠\n" +
-                                  $"{taptap}　　  │　　 ■　　■　   　 │ \n"+
+                                  $"{taptap}　　  │　　 ■　　■　   　 │ \n" +
                                   $"{taptap}　　  ├──┬───────────────┬──┤ \n" +
                                   $"{taptap}　　  ￣ │ 　　　　 　   │  ￣ \n" +
-                                  $"{taptap}　　 　　│　　　　     　│ \n"+
+                                  $"{taptap}　　 　　│　　　　     　│ \n" +
                                   $"{taptap}　　 　　┴　　　　     　┴ \n");
             }
         }
         public class Player
         {
-         //   private int life = 5;
+            //   private int life = 5;
             public void PlayTalk()
             {
                 Console.Write($"\n{playerT}당신의 선택은?\n" +
@@ -219,7 +216,7 @@ namespace SpartaDun
                 $"{playerT} ");
                 string act = Console.ReadLine();
                 luck = int.Parse(act);
-                if(luck !=1 && luck !=2)
+                if (luck != 1 && luck != 2)
                 {
                     Console.WriteLine($"{playerT}다시");
                     PlayLucky();
@@ -229,10 +226,10 @@ namespace SpartaDun
             {
                 choice = int.Parse(Console.ReadLine());
             }
-            
-            
+
+
         }
-        
+
         public struct UserInfoStruct
         {
             public int Level { get; set; }
@@ -242,9 +239,9 @@ namespace SpartaDun
             public int Defence { get; set; }
             public int HP { get; set; }
             public int Gold { get; set; }
-            
+
             //01,"none","무직",10,5,100,1500
-            public UserInfoStruct(int level, string name, string job, int attack, int defence, int hp, int gold )
+            public UserInfoStruct(int level, string name, string job, int attack, int defence, int hp, int gold)
             {
                 Level = level;
                 Name = name;
@@ -254,17 +251,17 @@ namespace SpartaDun
                 HP = hp;
                 Gold = gold;
             }
-            
-            public void UserChangeStats(int addAttack,int addDefence)
+
+            public void UserChangeStats(int addAttack, int addDefence)
             {
                 this.Attack += addAttack;
-                this.Defence += addDefence;   
+                this.Defence += addDefence;
             }
             public void UserChangeGold(int addGold)
             {
                 this.Gold += addGold;
             }
-            public void UserLevelUp(int level,int addAttack, int hp)
+            public void UserLevelUp(int level, int addAttack, int hp)
             {
                 this.Level += level;
                 this.Attack += addAttack;
@@ -279,24 +276,24 @@ namespace SpartaDun
             public int OptionValue { get; set; }
             public int AddGold { get; set; }
 
-            public bool Equip {  get; set; }
+            public bool Equip { get; set; }
             public bool Purchase { get; set; }
-            public int InvenItem {  get; set; }
-            public ItemStruct(string name,string option, int optionValue, string tmi ,int addGold)
+            public int InvenItem { get; set; }
+            public ItemStruct(string name, string option, int optionValue, string tmi, int addGold)
             {
                 Name = name;
                 Option = option;
                 Tmi = tmi;
                 OptionValue = optionValue;
                 AddGold = addGold;
-                Purchase=false;
+                Purchase = false;
                 Equip = false;
                 InvenItem = 0;
             }
         }
 
-        
-        
+
+
         public class EveryFunction
         {
             List<ItemStruct> items = new List<ItemStruct>();
@@ -397,7 +394,7 @@ namespace SpartaDun
                     }
                 }
             }
-            
+
             public void UsingInven()
             {
                 int invenChoice;
@@ -416,7 +413,7 @@ namespace SpartaDun
 
                     if (invenChoice == 1)
                     {
-                        isTakeItem=true;
+                        isTakeItem = true;
                         while (isTakeItem)
                         {
                             ItemListTypeEquip();
@@ -439,7 +436,7 @@ namespace SpartaDun
                                     }
                                 }
                             }
-                            else if(selectIndexInven == 0)
+                            else if (selectIndexInven == 0)
                             {
                                 isTakeItem = false;
                             }
@@ -458,14 +455,14 @@ namespace SpartaDun
                     {
                         Console.WriteLine($"{playerT}잘못입력하셨습니다.\n");
                     }
-                    Console.Write($"{taptap}가방을 닫고 앞을 바라봅니다. ");
-                }
 
+                }
+                Console.Write($"{taptap}가방을 닫고 앞을 바라봅니다. ");
             }
             public void UsingStats()
             {
-                
-                int statsChoice=1;
+
+                int statsChoice = 1;
                 Console.WriteLine($"{taptap}캐릭터 정보");
 
                 int addAttack = 0;
@@ -475,20 +472,20 @@ namespace SpartaDun
                 {
                     if (items[i].Equip == true)
                     {
-                        if(items[i].Option =="공격력")
+                        if (items[i].Option == "공격력")
                         {
                             addAttack += items[i].OptionValue;
                         }
-                        else if (items[i].Option=="방어력")
+                        else if (items[i].Option == "방어력")
                         {
                             addDefence += items[i].OptionValue;
                         }
                     }
                 }
-                Console.WriteLine($"Lv. {userInfo.Level}\n{userInfo.Name} ( {userInfo.Job} )\n공격력 : {userInfo.Attack+addAttack}+({addAttack})\n방어력 : {userInfo.Defence+addDefence}+({addDefence})\n체　력 : {userInfo.HP}\nGold : {userInfo.Gold} G\n");
+                Console.WriteLine($"Lv. {userInfo.Level}\n{userInfo.Name} ( {userInfo.Job} )\n공격력 : {userInfo.Attack + addAttack}+({addAttack})\n방어력 : {userInfo.Defence + addDefence}+({addDefence})\n체　력 : {userInfo.HP}\nGold : {userInfo.Gold} G\n");
                 Console.Write($"{playerT}0.나가기\n{playerT}당신의 선택은?\n" +
                 $"{playerT} ");
-                
+
                 while (statsChoice != 0)
                 {
                     statsChoice = int.Parse(Console.ReadLine());
@@ -497,13 +494,13 @@ namespace SpartaDun
                 }
                 Console.WriteLine($"{taptap}몸 매무세를 정돈하고 앞을 바라봅니다. ");
             }
-            
+
 
             public void UsingShop()
             {
-                
+
                 isUsingShop = true;
-                int selectIndex=0;
+                int selectIndex = 0;
                 int shopChoice;
                 Console.WriteLine($"{taptap}#건물에 다가갔다.\n" +
                 $"{taptap} 다양한 물건들과 정체모를 사람이 있다.\n" +
@@ -512,24 +509,24 @@ namespace SpartaDun
                     $"{playerT}My Gold : {userInfo.Gold}G\n\n");
 
                 Console.WriteLine("아이템 목록\n\n");
-                
+
                 while (isUsingShop)
                 {
                     ItemListTypeEquip();
-                    
-                    Console.WriteLine($"{playerT}1.아이템 구매\t0.나가기");
+
+                    Console.WriteLine($"{playerT}1.아이템 구매\t2.아이템 판매\n{playerT}0.나가기");
                     Console.Write($"{playerT} ");
                     shopChoice = int.Parse(Console.ReadLine());
-                
+
                     if (shopChoice == 1)
                     {
                         isPurchaseCheck = true;
                         ItemListTypeEquip();
                         Console.WriteLine($"{playerT}구매할 아이템을 선택하세요:");
                         Console.Write($"{playerT} ");
-                        
-                            selectIndex = int.Parse(Console.ReadLine());
-                        if( 0 < selectIndex && selectIndex <= items.Count)
+
+                        selectIndex = int.Parse(Console.ReadLine());
+                        if (0 < selectIndex && selectIndex <= items.Count)
                         {
                             selectIndex--;
                             if (items[selectIndex].Purchase == true)
@@ -555,9 +552,9 @@ namespace SpartaDun
                                             currentItem.Purchase = !currentItem.Purchase;
                                             items[selectIndex] = currentItem;
                                             userInfo.UserChangeGold(-items[selectIndex].AddGold);
-                                            
+
                                             // info.Gold -= items[itemIndex].AddGold; // 골드 차감
-                                            
+
                                         }
                                         else
                                         {
@@ -581,7 +578,50 @@ namespace SpartaDun
                         }
                         else { Console.WriteLine($"{playerT}잘못누르셨습니다."); }
                     }
-                    else if(shopChoice==0)
+                    else if (shopChoice == 2)
+                    {
+                        SellItem();
+                        //isTakeItem = true;
+                        //isUsingInven = true;
+                        //ItemListTypeEquip();
+                        //Console.WriteLine($"{playerT}판매할 아이템을 선택하세요:\n" +
+                        //                  $"{playerT}0.나가기");
+                        //Console.Write($"{playerT} ");
+                        //selectIndex = int.Parse(Console.ReadLine());
+                        //SellItem(selectIndex);
+                        //while (isTakeItem)
+                        //{
+                        //    
+                        //    for (int number = 0; number < items.Count; number++)
+                        //    {
+                        //        if (selectIndex == 0)
+                        //        {
+                        //            isTakeItem = false;
+                        //            isUsingInven = false;
+                        //            break;
+                        //        }
+                        //        else if (items[number].InvenItem == selectIndex)
+                        //        {
+                        //            Console.WriteLine($"{playerT}아이템을 판매하였습니다.");
+                        //            var currentItem = items[number];
+                        //            currentItem.Purchase = !currentItem.Purchase;
+                        //            if (currentItem.Equip == true)
+                        //            {
+                        //                currentItem.Equip = false;
+                        //            }
+                        //            int sell = currentItem.AddGold / 100 * 85;
+                        //            userInfo.UserChangeGold(+sell);
+                        //            items[number] = currentItem;
+                        //            //userInfo.UserChangeGold(+items[selectIndex].AddGold);
+                        //        }
+                        //        else if (items.Count < selectIndex)
+                        //        {
+                        //            Console.WriteLine("잘못 누르셨습니다.");
+                        //        }
+                        //    }
+                        //}
+                    }
+                    else if (shopChoice == 0)
                     {
                         isUsingShop = false;
                     }
@@ -591,6 +631,54 @@ namespace SpartaDun
                     }
                 }
                 Console.WriteLine($"{taptap}#건물에서 나왔다.");
+            }
+            public void SellItem()
+            {
+                isTakeItem = true;
+                isUsingInven = true;
+                while (true)
+                {
+                    ItemListTypeEquip();
+
+                    Console.WriteLine($"{playerT}판매할 아이템을 선택하세요:\n" +
+                                  $"{playerT}0.나가기");
+                    Console.Write($"{playerT} ");
+
+
+                    int selectIndex = int.Parse(Console.ReadLine());
+                    if (selectIndex == 0)
+                    {
+                        isTakeItem = false;
+                        isUsingInven = false;
+                        break;
+                    }
+                    else if (0 < selectIndex && selectIndex <= items.Count)
+                    {
+                        for (int number = 0; number < items.Count; number++)
+                        {
+                            if (items[number].InvenItem == selectIndex)
+                            {
+                                Console.WriteLine($"{playerT}아이템을 판매하였습니다.");
+                                var currentItem = items[number];
+                                currentItem.Purchase = !currentItem.Purchase;
+                                if (currentItem.Equip == true)
+                                {
+                                    currentItem.Equip = false;
+                                }
+                                int sell = currentItem.AddGold / 100 * 85;
+                                userInfo.UserChangeGold(+sell);
+                                items[number] = currentItem;
+                            }
+
+                        }
+
+                        //userInfo.UserChangeGold(+items[selectIndex].AddGold);
+                    }
+                    else if (items.Count < selectIndex)
+                    {
+                        Console.WriteLine("잘못 누르셨습니다.");
+                    }
+                }
             }
         }
 
